@@ -1,5 +1,6 @@
 package me.aikin.refactoring.state.pattern;
 
+import me.aikin.refactoring.state.pattern.machinestatus.MachineStatus;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
