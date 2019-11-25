@@ -1,6 +1,6 @@
 package me.aikin.refactoring.command.pattern.command;
 
-import me.aikin.refactoring.command.pattern.Ceiling;
+import me.aikin.refactoring.command.pattern.reciever.Ceiling;
 
 public class TurnOffCeilingCommand extends Command {
     private final Ceiling ceiling;

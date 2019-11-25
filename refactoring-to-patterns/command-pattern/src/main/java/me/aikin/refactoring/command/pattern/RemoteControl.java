@@ -5,20 +5,20 @@ import me.aikin.refactoring.command.pattern.command.Command;
 import java.util.HashMap;
 
 public class RemoteControl {
-    private HashMap<Integer, Command> commandHashMap = new HashMap<>();
+    private HashMap<SlotTypeEnum, Command> commandHashMap = new HashMap<>();
 
     public RemoteControl() {
     }
 
-    public void on(int slot) {
+    public void on(SlotTypeEnum slot) {
         commandHashMap.get(slot).execute();
     }
 
-    public void off(int slot) {
+    public void off(SlotTypeEnum slot) {
         commandHashMap.get(slot).execute();
     }
 
-    public void setCommand(Integer slot, Command command) {
-        this.commandHashMap.put(slot, command);
+    public void setCommand(SlotTypeEnum slotType, Command command) {
+        this.commandHashMap.put(slotType, command);
     }
 }

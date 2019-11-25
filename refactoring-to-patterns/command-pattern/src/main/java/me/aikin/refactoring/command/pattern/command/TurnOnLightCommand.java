@@ -1,6 +1,6 @@
 package me.aikin.refactoring.command.pattern.command;
 
-import me.aikin.refactoring.command.pattern.Light;
+import me.aikin.refactoring.command.pattern.reciever.Light;
 
 public class TurnOnLightCommand extends Command {
 

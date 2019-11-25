@@ -1,4 +1,4 @@
-package me.aikin.refactoring.command.pattern;
+package me.aikin.refactoring.command.pattern.reciever;
 
 public class Ceiling {
 
