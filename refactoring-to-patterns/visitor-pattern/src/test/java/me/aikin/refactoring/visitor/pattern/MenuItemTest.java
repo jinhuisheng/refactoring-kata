@@ -30,24 +30,27 @@ public class MenuItemTest {
 
     @Test
     public void should_calc_health_rating_for_MenuItem() {
-        assertEquals(2, moonCake.getHealthRating().size());
-        assertTrue(moonCake.getHealthRating().contains(1));
-        assertTrue(moonCake.getHealthRating().contains(2));
+        List<Object> healthRatings = moonCake.accept(new getHealthRatingVisitor());
+        assertEquals(2, healthRatings.size());
+        assertTrue(healthRatings.contains(1));
+        assertTrue(healthRatings.contains(2));
     }
 
     @Test
     public void should_calc_protein_for_MenuItem() {
-        assertEquals(2, moonCake.getProtein().size());
-        assertTrue(moonCake.getProtein().contains("100.0 g"));
-        assertTrue(moonCake.getProtein().contains("200.0 g"));
+        List<Object> proteins = moonCake.accept(new CalculateProteinVisitor());
+        assertEquals(2, proteins.size());
+        assertTrue(proteins.contains("100.0 g"));
+        assertTrue(proteins.contains("200.0 g"));
     }
 
     @Test
     public void should_calc_calory_for_MenuItem() {
-        assertEquals(3, moonCake.getCalory().size());
-        assertTrue(moonCake.getCalory().contains("10 J"));
-        assertTrue(moonCake.getCalory().contains("20 J"));
-        assertTrue(moonCake.getCalory().contains("Cooking will double calories!!!"));
+        List<Object> calories = moonCake.acceptCaloryVisitor(new CaloryVisitor());
+        assertEquals(3, calories.size());
+        assertTrue(calories.contains("10 J"));
+        assertTrue(calories.contains("20 J"));
+        assertTrue(calories.contains("Cooking will double calories!!!"));
     }
 
     private static Ingredient CreateFlour() {

@@ -10,41 +10,31 @@ public class MenuItem {
         this.ingredients = ingredients;
     }
 
-    public void AddToPot() {
+    /**
+     * 访问者访问元素的入口
+     *
+     * @param visitor 访问者
+     */
+    public List<Object> accept(Visitor visitor) {
+        return acceptInternal(visitor);
     }
 
-    public void AddWater() {
-    }
-
-    public void AddOil() {
-    }
-
-    public void Smell() {
-    }
-
-    public void Taste() {
-    }
-
-    public void Cook() {
-    }
-
-    public List<Integer> getHealthRating() {
-        return ingredients.stream()
-                .map(Ingredient::getHealthRating)
-                .collect(Collectors.toList());
-    }
-
-    public List<String> getProtein() {
-        return ingredients.stream()
-                .map(Ingredient::getProtein)
-                .collect(Collectors.toList());
-    }
-
-    public List<String> getCalory() {
-        List<String> calories = ingredients.stream()
-                .map(Ingredient::getCalory)
-                .collect(Collectors.toList());
+    /**
+     * 访问者访问元素的入口
+     *
+     * @param visitor 访问者
+     */
+    public List<Object> acceptCaloryVisitor(Visitor visitor) {
+        List<Object> calories = acceptInternal(visitor);
         calories.add("Cooking will double calories!!!");
         return calories;
     }
+
+    private List<Object> acceptInternal(Visitor visitor) {
+        return ingredients.stream()
+                .map(item -> item.accept(visitor))
+                .collect(Collectors.toList());
+    }
+
+
 }

@@ -1,10 +1,10 @@
 package me.aikin.refactoring.visitor.pattern;
 
-public class Ingredient {
-    private NutritionInfo Nutrition;
+public class Ingredient implements Element {
+    private NutritionInfo nutrition;
 
     public Ingredient(NutritionInfo nutrition) {
-        Nutrition = nutrition;
+        this.nutrition = nutrition;
     }
 
     public void addToPot() {
@@ -21,15 +21,20 @@ public class Ingredient {
 
     public int getHealthRating() {
         smell();
-        return Nutrition.getHealthRating();
+        return nutrition.getHealthRating();
     }
 
     public String getProtein() {
-        return Nutrition.getProtein() + " g";
+        return nutrition.getProtein() + " g";
     }
 
     public String getCalory() {
-        return Nutrition.getCalory() + " J";
+        return nutrition.getCalory() + " J";
+    }
+
+    @Override
+    public Object accept(Visitor visitor) {
+        return visitor.visit(this);
     }
 }
 
