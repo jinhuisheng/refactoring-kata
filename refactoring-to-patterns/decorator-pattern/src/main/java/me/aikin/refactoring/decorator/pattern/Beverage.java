@@ -9,14 +9,6 @@ public abstract class Beverage {
         this.mocha = mocha;
     }
 
-    public boolean isMilk() {
-        return milk;
-    }
-
-    public boolean isMocha() {
-        return mocha;
-    }
-
     public String getDescription() {
         return "";
     }
